@@ -3,7 +3,8 @@ import { SpeakerDiarization } from '../index.js'
 const example = async () => {
     const speakerDiarization = new SpeakerDiarization();
     const result = await speakerDiarization.inference({
-        audio: './examples/audio.wav',  // File path for Node.js
+        audio: 'examples/audio.wav',  // File path for Node.js
+        language: "en",
         device: 'cpu', // or 'cuda'
         audioOptions: {
             targetSampleRate: 16000,
@@ -14,7 +15,7 @@ const example = async () => {
         progress_callback: (progress) => console.log('Progress:', progress)
     });
 
-    console.log(result.segments);
+    console.table(result.segments);
 };
 
 example();
