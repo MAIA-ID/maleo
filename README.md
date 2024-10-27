@@ -99,11 +99,11 @@ interface Segment {
 If you use this library in your research, please cite:
 
 ```bibtex
-@inproceedings{speakerdiarization2024,
-    title={Speaker Diarization: A JavaScript Implementation},
-    author={[Author Name]},
-    booktitle={[Conference/Journal Name]},
-    year={2024}
+@inproceedings{irawan2025cross,
+  title = {Cross-Platform Speaker Diarization: Evaluating the Scalability of Maleo},
+  author = {Eka Tresna Irawan and Ardi Mardiana and Dedy Hariyadi and I Putu Agus Eka Pratama},
+  booktitle = {International Conference on Discoveries in Applied Sciences & Advanced Technology 2025},
+  year = {2025}
 }
 ```
 
