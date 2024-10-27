@@ -1,4 +1,4 @@
-# Speaker Diarization
+# MALEO: Multi Platform Speaker Diarization
 
 A JavaScript library for speaker diarization - the process of partitioning an audio stream into segments according to speaker identity.
 
