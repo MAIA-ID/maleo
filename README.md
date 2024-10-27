@@ -25,7 +25,7 @@ For CUDA installation instructions, refer to the [NVIDIA cuDNN Installation Guid
 ## Installation
 
 ```bash
-npm install speaker-diarization
+npm install @maia-id/maleo
 ```
 
 ## Usage
