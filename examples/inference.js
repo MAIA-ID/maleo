@@ -14,7 +14,7 @@ const example = async () => {
         progress_callback: (progress) => console.log('Progress:', progress)
     });
 
-    console.table(result.segments);
+    console.log(result.segments);
 };
 
 example();
