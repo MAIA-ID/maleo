@@ -40,7 +40,8 @@ const example = async () => {
     const speakerDiarization = new SpeakerDiarization();
     const result = await speakerDiarization.inference({
         audio: './examples/audio.wav',  // File path for Node.js
-        device: 'cpu', // or 'cuda'
+        language: 'en',
+        device: 'cpu', // Device support : 'cpu', 'cuda', 'webgpu', or 'wasm'
         audioOptions: {
             targetSampleRate: 16000,
             normalizeAudio: true,
@@ -78,7 +79,7 @@ node examples/inference.js
 | Option | Type | Description |
 |--------|------|-------------|
 | audio | string | Path to the audio file |
-| device | 'cpu' \| 'cuda' | Processing device to use |
+| device | 'cpu' \| 'cuda' \| 'webgpu' \| 'wasm' | Processing device to use |
 | progress_callback | function | Callback for tracking progress |
 
 ## Output Format
