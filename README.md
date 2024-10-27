@@ -5,7 +5,7 @@ A JavaScript library for speaker diarization - the process of partitioning an au
 ## Features
 
 - Audio preprocessing with customizable options
-- CPU and GPU support
+- CPU, GPU, and WebGPU support
 - Progress tracking during inference
 - Flexible audio input handling
 - Silence removal and audio normalization capabilities
