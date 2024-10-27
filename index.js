@@ -51,7 +51,7 @@ const isNode = typeof process !== 'undefined' && process.versions && process.ver
 const isBrowser = typeof window !== 'undefined';
 
 class DeviceDetector {
-    static async checkWebGPU() {
+    async checkWebGPU() {
         if (isNode) return false;
         if (!navigator.gpu) return false;
         try {
@@ -62,7 +62,7 @@ class DeviceDetector {
         }
     }
 
-    static async checkCUDA() {
+    async checkCUDA() {
         if (!isNode) return false;
         try {
             // Check for CUDA availability in Node.js
@@ -73,7 +73,7 @@ class DeviceDetector {
         }
     }
 
-    static async getBestAvailableDevice() {
+    async getBestAvailableDevice() {
         if (await this.checkCUDA()) return 'cuda';
         if (await this.checkWebGPU()) return 'webgpu';
         return 'cpu';
@@ -220,16 +220,16 @@ class AudioProcessor {
     // ... other existing methods ...
 }
 
-class UnifiedPipeline {
-    static asr_model_id = 'onnx-community/whisper-base_timestamped';
-    static segmentation_model_id = 'onnx-community/pyannote-segmentation-3.0';
+class SpeakerDiarization {
+    asr_model_id = 'onnx-community/whisper-base_timestamped';
+    segmentation_model_id = 'onnx-community/pyannote-segmentation-3.0';
     
-    static asr_instance = null;
-    static segmentation_instance = null;
-    static segmentation_processor = null;
-    static audioProcessor = null;
+    asr_instance = null;
+    segmentation_instance = null;
+    segmentation_processor = null;
+    audioProcessor = null;
 
-    static async initialize(options = {}) {
+    async initialize(options = {}) {
         // Create temp directory for Node.js
         if (isNode) {
             await fs.mkdir(AUDIO_CONSTANTS.TEMP_DIR, { recursive: true }).catch(console.error);
@@ -286,7 +286,7 @@ class UnifiedPipeline {
         };
     }
 
-    static async process(audio, options = {}) {
+    async process(audio, options = {}) {
         // Ensure pipeline is initialized
         if (!this.asr_instance || !this.segmentation_instance || !this.audioProcessor) {
             await this.initialize(options);
@@ -343,7 +343,26 @@ class UnifiedPipeline {
         }
     }
 
-    static async splitAudioIntoChunks(audio) {
+    async inference(options) {
+        try {
+            return await this.process(options.audio, {
+                device: options.device,
+                language: options.language,
+                audioOptions: {
+                    ...options.audioOptions,
+                    isNode,
+                    isBrowser
+                },
+                splitChunks: options.splitChunks,
+                progress_callback: options.progress_callback
+            });
+        } catch (error) {
+            console.error('Pipeline error:', error);
+            throw error;
+        }
+    }
+
+    async splitAudioIntoChunks(audio) {
         const chunkSamples = Math.floor(AUDIO_CONSTANTS.CHUNK_DURATION * AUDIO_CONSTANTS.TARGET_SAMPLE_RATE);
         const chunks = [];
 
@@ -354,7 +373,7 @@ class UnifiedPipeline {
         return chunks;
     }
 
-    static async runSegmentation(audio) {
+    async runSegmentation(audio) {
         const features = await this.segmentation_processor(audio, {
             sampling_rate: AUDIO_CONSTANTS.TARGET_SAMPLE_RATE,
             return_tensors: true
@@ -364,7 +383,7 @@ class UnifiedPipeline {
         return this.processSegmentationOutput(output, audio);
     }
 
-    static processSegmentationOutput(output, audio) {
+    processSegmentationOutput(output, audio) {
         // Convert model output to speaker segments
         const scores = output.logits;
         const segments = this.segmentation_processor.post_process_speaker_diarization(scores, audio.length)[0];
@@ -377,7 +396,7 @@ class UnifiedPipeline {
         return segments;
     }
 
-    static async mergeResults(segments, transcription) {
+    async mergeResults(segments, transcription) {
         return {
             segments: segments.map(segment => ({
                 ...segment,
@@ -387,7 +406,7 @@ class UnifiedPipeline {
         };
     }
 
-    static findTranscriptionInTimeRange(transcription, start, end) {
+    findTranscriptionInTimeRange(transcription, start, end) {
         // Find all words that fall within the given time range
         return transcription.chunks
             .filter(chunk => chunk.timestamp[0] >= start && chunk.timestamp[1] <= end)
@@ -396,7 +415,7 @@ class UnifiedPipeline {
             .trim();
     }
 
-    static combineResults(results) {
+    combineResults(results) {
         return {
             segments: results.flatMap((result, index) => 
                 result.segments.map(segment => ({
@@ -410,28 +429,8 @@ class UnifiedPipeline {
     }
 }
 
-// Export unified interface
-export async function run(options) {
-    try {
-        return await UnifiedPipeline.process(options.audio, {
-            device: options.device,
-            language: options.language,
-            audioOptions: {
-                ...options.audioOptions,
-                isNode,
-                isBrowser
-            },
-            splitChunks: options.splitChunks,
-            progress_callback: options.progress_callback
-        });
-    } catch (error) {
-        console.error('Pipeline error:', error);
-        throw error;
-    }
-}
-
 export {
-    UnifiedPipeline,
+    SpeakerDiarization,
     DeviceDetector,
     AudioProcessor,
     AUDIO_CONSTANTS,
