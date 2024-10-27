@@ -14,14 +14,14 @@
   resolved "https://registry.yarnpkg.com/@huggingface/jinja/-/jinja-0.3.0.tgz#372d34f7eba59c3b886d892a6c72acd211d74675"
   integrity sha512-GLJzso0M07ZncFkrJMIXVU4os6GFbPocD4g8fMQPMGJubf48FtGOsUORH2rtFdXPIPelz8SLBMn8ZRmOTwXm9Q==
 
-"@huggingface/transformers@^3.0.0-alpha.14":
-  version "3.0.0-alpha.14"
-  resolved "https://registry.yarnpkg.com/@huggingface/transformers/-/transformers-3.0.0-alpha.14.tgz#a1448cb9e3916fc98d5a46aea6a05e32b72b477b"
-  integrity sha512-yRTKOP+xcZqHtlr7WiMWrV+E+XvqfiVLF4wZAlD1ozf0O5LPXKdkd8bfxFogd5d1kDxPlEdCLCJ3l8ZTNfqRyA==
+"@huggingface/transformers@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@huggingface/transformers/-/transformers-3.0.1.tgz#3de0eaa6126fd427ede6414bd3b385bfac284498"
+  integrity sha512-lXmF0/p+ZdQX0NKTybLUCzIKr0sKD6BfqtjL7olaLx2JHAM3HKVrvFjWeFe2lQRkhL6cEcFw2WXs7o8nZU/WGg==
   dependencies:
     "@huggingface/jinja" "^0.3.0"
-    onnxruntime-node "1.19.0"
-    onnxruntime-web "1.20.0-dev.20240827-1d059b8702"
+    onnxruntime-node "1.19.2"
+    onnxruntime-web "1.21.0-dev.20241024-d9ca84ef96"
     sharp "^0.33.5"
 
 "@img/sharp-darwin-arm64@0.33.5":
@@ -493,33 +493,33 @@ music-metadata@^10.5.1:
     token-types "^6.0.0"
     uint8array-extras "^1.4.0"
 
-onnxruntime-common@1.19.0:
-  version "1.19.0"
-  resolved "https://registry.yarnpkg.com/onnxruntime-common/-/onnxruntime-common-1.19.0.tgz#1d913321caa5eda76775c496d9f0f831dd30bec6"
-  integrity sha512-Oo16UIJ/xLOtZDVGcL4bL8EP8MiNFztyBmR3pB14D+cl/UCpOgHHzEk0MADSmYXQ0FgyEegPXtOFcJqhq1YRsw==
+onnxruntime-common@1.19.2:
+  version "1.19.2"
+  resolved "https://registry.yarnpkg.com/onnxruntime-common/-/onnxruntime-common-1.19.2.tgz#39447d703aef6499f71487cb8970f58752234523"
+  integrity sha512-a4R7wYEVFbZBlp0BfhpbFWqe4opCor3KM+5Wm22Az3NGDcQMiU2hfG/0MfnBs+1ZrlSGmlgWeMcXQkDk1UFb8Q==
 
-onnxruntime-common@1.20.0-dev.20240827-5d54dc1462:
-  version "1.20.0-dev.20240827-5d54dc1462"
-  resolved "https://registry.yarnpkg.com/onnxruntime-common/-/onnxruntime-common-1.20.0-dev.20240827-5d54dc1462.tgz#e3107fac609d228abde70ff79dcb0d91ed12ea90"
-  integrity sha512-oR+xPRD64OI+w9nRLXQi9rEXYZ5W9BhqVi688sUTreU9J6pK182JYblmHjvapCg+Tta6MbkAsr3T1NZHM3tB1g==
+onnxruntime-common@1.20.0-dev.20241016-2b8fc5529b:
+  version "1.20.0-dev.20241016-2b8fc5529b"
+  resolved "https://registry.yarnpkg.com/onnxruntime-common/-/onnxruntime-common-1.20.0-dev.20241016-2b8fc5529b.tgz#7c7c438012aefbde2a45eef6d2c4e3957244eb44"
+  integrity sha512-KZK8b6zCYGZFjd4ANze0pqBnqnFTS3GIVeclQpa2qseDpXrCQJfkWBixRcrZShNhm3LpFOZ8qJYFC5/qsJK9WQ==
 
-onnxruntime-node@1.19.0:
-  version "1.19.0"
-  resolved "https://registry.yarnpkg.com/onnxruntime-node/-/onnxruntime-node-1.19.0.tgz#7ce538eb400cf2370023e7f07f7e7a4d7589cc1f"
-  integrity sha512-JivYcrZ9H9YPpHnP+5rTVTJjzuD+ZB0TsB0//e2La0ViYNG0hmTvnwFgmRoes6F7E1PyVMpyRftmcl9pnIWsnw==
+onnxruntime-node@1.19.2:
+  version "1.19.2"
+  resolved "https://registry.yarnpkg.com/onnxruntime-node/-/onnxruntime-node-1.19.2.tgz#2f2e1c9286c97291030770c085fb403647538ad7"
+  integrity sha512-9eHMP/HKbbeUcqte1JYzaaRC8JPn7ojWeCeoyShO86TOR97OCyIyAIOGX3V95ErjslVhJRXY8Em/caIUc0hm1Q==
   dependencies:
-    onnxruntime-common "1.19.0"
+    onnxruntime-common "1.19.2"
     tar "^7.0.1"
 
-onnxruntime-web@1.20.0-dev.20240827-1d059b8702:
-  version "1.20.0-dev.20240827-1d059b8702"
-  resolved "https://registry.yarnpkg.com/onnxruntime-web/-/onnxruntime-web-1.20.0-dev.20240827-1d059b8702.tgz#d9a896f4bbbf8191a2e0b5089a829f7736ecc044"
-  integrity sha512-v1t3TgnOmyzA1lGcUiqp6kZDv7QxO+yJI00vHp8lyjgBrnxkLY+6fqFZpBfm81AH5sRaCdG+HsOmb5Y37TIAyw==
+onnxruntime-web@1.21.0-dev.20241024-d9ca84ef96:
+  version "1.21.0-dev.20241024-d9ca84ef96"
+  resolved "https://registry.yarnpkg.com/onnxruntime-web/-/onnxruntime-web-1.21.0-dev.20241024-d9ca84ef96.tgz#76bf67b715c50a8a71d58e910c00320e430628fa"
+  integrity sha512-ANSQfMALvCviN3Y4tvTViKofKToV1WUb2r2VjZVCi3uUBPaK15oNJyIxhsNyEckBr/Num3JmSXlkHOD8HfVzSQ==
   dependencies:
     flatbuffers "^1.12.0"
     guid-typescript "^1.0.9"
     long "^5.2.3"
-    onnxruntime-common "1.20.0-dev.20240827-5d54dc1462"
+    onnxruntime-common "1.20.0-dev.20241016-2b8fc5529b"
     platform "^1.3.6"
     protobufjs "^7.2.4"
 
