@@ -10,6 +10,6 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@maia-id/maleo": "^1.1.0"
+    "@maia-id/maleo": "^1.1.2"
   }
 }
