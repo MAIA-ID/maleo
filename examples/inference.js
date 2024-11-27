@@ -1,4 +1,4 @@
-import { SpeakerDiarization } from '@maia-id/maleo'
+import { SpeakerDiarization } from '../index.js'
 // Example usage
 const example = async () => {
     const speakerDiarization = new SpeakerDiarization();
