@@ -1,9 +1,9 @@
-import { SpeakerDiarization } from '../index.js'
+import { SpeakerDiarization } from '@maia-id/maleo'
 // Example usage
 const example = async () => {
     const speakerDiarization = new SpeakerDiarization();
     const result = await speakerDiarization.inference({
-        audio: 'examples/audio.wav',  // File path for Node.js
+        audio: 'audio.wav',  // File path for Node.js
         language: "en",
         device: 'cpu', // or 'cuda'
         audioOptions: {
